@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Project</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="d-flex justify-content-between mt-5">
+            <h1>{{user.first_name}}, add a new recipe!</h1>
+            <div>
+                <a href="/dashboard" class="btn btn-primary me-3">Home</a>
+                <a href="/logout" class="btn btn-secondary me-3">logout</a>
+            </div>
+        </div>
+        <div class=" mt-5">
+            <h3>New Recipe:</h3>
+            <form action="/recipe/create" class="" method="post">
+                <div class="mb-3 form-group">
+                    <label for="name" class="form-label">Name :</label>
+                    <input type="text" class="form-control" name="name">
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="description" class="form-label">Description :</label>
+                    <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+                </div>
+                <div class="mb-3 form-group">
+                    <label for="instructions" class="form-label">Instructions :</label>
+                    <textarea name="instructions" class="form-control" id="instructions" rows="5"></textarea>
+                </div>
+                <div>
+
+                    <label for="date_made">Date Made :</label>
+                    <input type="date" name="date_made" id="date_made">
+                </div>
+                <div class="mt-3">
+
+                    <label for="">Under 30 mins?</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="under_30" id="under_30"
+                        value="Yes">
+                        <label class="form-check-label" for="under_30">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="under_30" id="under_30"
+                        value="No" checked>
+                        <label class="form-check-label" for="under_30">No</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Create</button>
+            </form>
+        </div>
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    {% for message in messages %}
+                    <p style="color:red; font-weight:600; " >{{ message }}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <!-- -- JS Bootstrap -- -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
